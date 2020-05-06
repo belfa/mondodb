@@ -4,6 +4,7 @@ const User = require('../src/user');
 describe('Validation records', () => {
     it('requires a user name', () => {
         const user = new User( {name: undefined} );
+        console.info(user.validateSync());
         const validationResult = user.validateSync();
         const { message } = validationResult.errors.name;
 
@@ -16,5 +17,16 @@ describe('Validation records', () => {
         const { message } = validationResult.errors.name;
 
         assert(message === 'Name must be longer than 2 characters.');
-    })
+    });
+
+    it('disallows invalidad records from being saved', (done) => {
+        const user = new User({name: 'Al'});
+        user.save()
+            .catch((validationResult) => {
+                const { message } = validationResult.errors.name;
+
+                assert(message === 'Name must be longer than 2 characters.');
+                done();
+            })
+    });
 })
