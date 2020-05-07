@@ -7,7 +7,8 @@ const UserSchema = new Schema({
         validate:  {
             validator: (name) => name === undefined || name.length > 2,
             message: 'Name must be longer than 2 characters.'
-        }
+        },
+        required: [true, 'Name is required.']
     },
     postCount: Number
 });
