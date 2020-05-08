@@ -19,13 +19,35 @@ describe('Associations', () => {
             .then(() => done());
     });
 
-    it.only('saves a  realation between a user and a blogpost', (done) => {
+    it('saves a  realation between a user and a blogpost', (done) => {
         User.findOne({ name: 'Joe' })
         .populate('blogPosts')
         .then((user) => {
             assert(user.blogPosts[0].title === 'JS is Great');
             done();
         });
+    });
+
+    it.only('saves a full relation tree graph', (done) => {
+        User.findOne({ name: 'Joe' })
+            .populate({
+                path: 'blogPosts',
+                populate: {
+                    path: 'comments',
+                    model: 'comment',
+                    populate: {
+                        path: 'user',
+                        model: 'user'
+                    }
+                }
+            })
+            .then((user) => {
+                assert(user.name === 'Joe');
+                assert(user.blogPosts[0].title === 'JS is Great');
+                assert(user.blogPosts[0].comments[0].content === 'Congrants for ur posts');
+                assert(user.blogPosts[0].comments[0].user.name === 'Joe');
+                done();
+            })
     });
 });
 
