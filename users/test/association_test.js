@@ -28,7 +28,7 @@ describe('Associations', () => {
         });
     });
 
-    it.only('saves a full relation tree graph', (done) => {
+    it('saves a full relation tree graph', (done) => {
         User.findOne({ name: 'Joe' })
             .populate({
                 path: 'blogPosts',
