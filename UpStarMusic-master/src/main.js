@@ -1,3 +1,4 @@
+console.log('Main.js');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
@@ -25,6 +26,7 @@ const db = new Db('upstar_music', new Server('localhost', 27017));
 db.open()
   .then(() => {
     window.db = db;
+    console.log('Conectando');
     mongoose.connect('mongodb://localhost/upstar_music');
       mongoose.connection
         .once('open', () => {
@@ -33,4 +35,6 @@ db.open()
         .on('error', (error) => {
           console.warn('Warning', error);
         });
-  });
+  }).error(e) {
+    console.log(e);
+  };
