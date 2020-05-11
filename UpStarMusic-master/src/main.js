@@ -35,6 +35,4 @@ db.open()
         .on('error', (error) => {
           console.warn('Warning', error);
         });
-  }).error(e) {
-    console.log(e);
-  };
+  });

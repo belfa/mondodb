@@ -18,10 +18,10 @@
     "eslint-config-rallycoding": "^3.1.0",
     "faker": "^3.1.0",
     "json-loader": "^0.5.4",
-    "lodash": "^4.17.15",
-    "markdown-loader": "^5.1.0",
-    "mongodb": "^3.5.7",
-    "mongoose": "^5.9.13",
+    "lodash": "^3.10.1",
+    "markdown-loader": "^0.1.7",
+    "mongodb": "^2.2.11",
+    "mongoose": "^4.6.6",
     "node-sass": "*",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
@@ -32,7 +32,7 @@
     "redux-form": "^6.1.1",
     "redux-thunk": "^2.1.0",
     "sass-loader": "^4.0.2",
-    "webpack": "^4.43.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
   }
 }
