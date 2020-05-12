@@ -31,6 +31,10 @@ const buildQuery = (criteria) => {
     console.log(criteria);
     const query = {};
 
+    if(criteria.name) {
+        query.$text = { $search: criteria.name };
+    }
+
     if(criteria.age) {
         query.age = {
             $gte: criteria.age.min,
