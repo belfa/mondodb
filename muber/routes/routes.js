@@ -6,4 +6,6 @@ module.exports = (app) => {
     app.get('/api', DirversController.greeting);
 
     app.post('/api/drivers', DirversController.create);
+    app.put('/api/drivers/:id', DirversController.edit);
+    app.delete('/api/drivers/:id', DirversController.delete);
 }
